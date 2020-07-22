@@ -8,11 +8,7 @@ $(document).ready(function () {
       Number($("#society").val()),
     ];
 
-    let sum = subject_points[0];
-    sum = sum + subject_points[1];
-    sum = sum + subject_points[2];
-    sum = sum + subject_points[3];
-    sum = sum + subject_points[4];
+    let sum = subject_points.reduce((a, n) => a + n);
 
     $("#sum_indicate").text(sum);
     $("#average_indicate").text(sum / subject_points.length);
@@ -58,7 +54,7 @@ $(document).ready(function () {
     let achievement = get_achievement();
 
     let pass_or_failure = get_pass_or_failure();
-
+    $("#declaration").empty();
     $("#declaration").append(
       `<label id="alert-indicate" class="alert alert-info">Your grade is ${achievement} and ${pass_or_failure}</label>`
     );
